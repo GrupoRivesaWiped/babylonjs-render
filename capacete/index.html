@@ -27,7 +27,13 @@
                 BABYLON.SceneLoader.ImportMesh("", "assets/", "capacete.glb", scene, function (meshes) {
                     let model = meshes[0];
                     model.position = BABYLON.Vector3.Zero();  // Model in center of scene
+                    model.scaling.scaleInPlace(1.2); // Scale model 20% larger
                     camera.target = model;
+
+                    // Rotate model
+                    scene.registerBeforeRender(function () {
+                        model.rotation.y += 0.01;
+                    });
                 });
 
                 return scene;
