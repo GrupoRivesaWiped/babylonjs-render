@@ -9,11 +9,10 @@
     </style>
 </head>
 <body>
-    <script type="module">
-        import * as THREE from '../capacete/assets/js/three.js';
-        import { OrbitControls } from './assets/js/OrbitControls';
-        import { GLTFLoader } from './assets/js/GLTFLoader';
-
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script>
         let scene, camera, renderer, model, controls;
 
         init();
@@ -30,12 +29,12 @@
             renderer.setSize(window.innerWidth, window.innerHeight);
             document.body.appendChild(renderer.domElement);
 
-            controls = new OrbitControls(camera, renderer.domElement);
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.autoRotate = true; // O modelo girará automaticamente
             controls.autoRotateSpeed = 2.0; // Velocidade de rotação
             controls.enableZoom = false; // Desabilita o zoom
 
-            let loader = new GLTFLoader();
+            let loader = new THREE.GLTFLoader();
             loader.load('capacete/assets/model/capacete.glb', function (gltf) {
                 model = gltf.scene;
                 scene.add(model);
